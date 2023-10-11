@@ -1,2 +1,2 @@
 #!/bin/bash
-rm --force --one-file-system -r *.js
+grep -rl --include='*.js' '' /path/to/your/directory | xargs rm
