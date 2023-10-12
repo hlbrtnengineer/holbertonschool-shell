@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -type f -iname '*.gif' -exec sh -c 'echo "${0%.*}"' {} \+ | sort -f
+find . -type d -exec sh -c 'find "$1" -maxdepth 1 -type f -iname "*.gif" -exec sh -c "echo \"\${0##*/}\"" {} \; | head -n 1' sh {} \+ | sort -f
