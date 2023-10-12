@@ -1,0 +1,2 @@
+#!/bin/bash
+find . -type f ! -s -printf "%P\n" -o -type d -empty -printf "%P\n"
