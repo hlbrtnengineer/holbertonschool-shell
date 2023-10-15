@@ -1,2 +1,2 @@
 #!/bin/bash
-awk 'NR % 2 == 1'
+grep -n '^' input.txt | grep -E '^[[:digit:]]*[02468]: ' | cut -d: -f2
