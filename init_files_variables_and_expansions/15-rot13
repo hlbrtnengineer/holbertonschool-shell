@@ -1,0 +1,2 @@
+#!/bin/bash
+echo "Your text to encode or decode" | tr 'A-Za-zN-ZA-M' 'N-ZA-Mn-za-m'
