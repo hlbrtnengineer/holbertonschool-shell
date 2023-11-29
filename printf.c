@@ -28,7 +28,6 @@ int _printf(const char *format, ...)
 					break;
 				case 's':
 					print_str(&count, args);
-					count++;
 					break;
 				default:
 					write(1, "%", 1);
