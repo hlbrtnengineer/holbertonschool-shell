@@ -27,7 +27,7 @@ int _printf(const char *format, ...)
 					count++;
 					break;
 				case 's':
-					print_str(args);
+					print_str(&count, args);
 					count++;
 					break;
 				default:
@@ -43,6 +43,7 @@ int _printf(const char *format, ...)
 		}
 		format++;
 	}
+
 	va_end(args);
 	return (count);
 }
