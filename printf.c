@@ -28,7 +28,7 @@ int _printf(const char *format, ...)
 					}
 					case 's':
 					{
-						print_string(args, &count);
+						print_str(args, &count);
 						break;
 					}
 					case '%':
