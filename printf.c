@@ -10,49 +10,43 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int count = 0;
-
 	va_start(args, format);
 
-	while (*format)
+	int count = 0;
+	while (*format != '\0')
 	{
-			if (*format == '%')
+		if (*format != '%')
+		{
+			putchar(*format);
+			count++;
+		}
+		else
+		{
+			// Handle format specifiers
+			switch (*++format)
 			{
-				format++;
-				switch (*format)
-				{
-					case 'c':
-					{
-						print_char(args, &count);
-						break;
-					}
-					case 's':
-					{
-<<<<<<< HEAD
-						print_string(args, &count);
-=======
-						print_str(args, &count);
->>>>>>> master
-						break;
-					}
-					case '%':
-					write(1, "%", 1);
-					count++;
-					break;
-					default:
-						write(1, "%", 1);
-						write(1, format, 1);
-						count += 2;
-					break;
-				}
+				case 'd':
+				count += fprintf(stdout, "%d", va_arg(args, int));
+				break;
+				case 'c':
+				count += fprintf(stdout, "%c", va_arg(args, char));
+				break;
+				case 's':
+				count += fprintf(stdout, "%s", va_arg(args, char *));
+				break;
+				case 'f':
+				count += fprintf(stdout, "%f", va_arg(args, double));
+				break;
+				default:
+			  // Handle unknown format specifiers
+				putchar('%');
+				putchar(*format);
+				count += 2;
+				break;
 			}
-			else
-			{
-				write(1, format, 1);
-				count++;
-			}
+		}
 		format++;
 	}
 	va_end(args);
-	return (count);
+	return count;
 }
