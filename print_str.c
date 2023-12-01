@@ -9,7 +9,7 @@
  * Return: nothing
  */
 
-void print_str(int *count, va_list args)
+void print_str(va_list args, int *count)
 {
 	char *str = va_arg(args, char *);
 
@@ -17,7 +17,7 @@ void print_str(int *count, va_list args)
 	{
 		write(1, str, 1);
 		if (*str != '\n')
-			(*count)++;
+		(*count)++;
 		str++;
 	}
 }
